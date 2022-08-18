@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/user/demo">TestException</a>
+<h1>Form register</h1>
+<h2 th:if="${message} != null" th:text="${message}"></h2>
+<form th:action="@{/user/register}" th:object="${user}" method="post">
+    <table>
+        <tr>
+            <th>Username</th>
+            <td><label><input type="text" th:field="*{username}" required></label></td>
+            <td th:if="${#fields.hasErrors('username')}" >
+                <span th:text="Lỗi"></span>
+            </td>
+        </tr>
+        <tr>
+            <th>Password</th>
+            <td><label><input type="text" th:field="*{password}"></label></td>
+            <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><button type="submit">Submit</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
