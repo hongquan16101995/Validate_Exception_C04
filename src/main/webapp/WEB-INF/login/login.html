@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>User Login</h1>
+<form th:action="@{/login}" th:object="${user}" method="post">
+    <table>
+        <tr>
+            <td><label>Username</label></td>
+            <td><label><input type="text" th:field="*{username}" th:value="${cookieValue.value}"/></label></td>
+            <!--lấy giá trị của cookie được gửi từ controller-->
+        </tr>
+        <tr>
+            <td><label>Password</label></td>
+            <td><label><input type="text" th:field="*{password}"/></label></td>
+        </tr>
+    </table>
+    <input type="submit" value="Login"/>
+</form>
+<br>
+<h2 th:text="${user.username}"></h2>
+<h2 th:text="${message}"></h2>
+</body>
+</html>
